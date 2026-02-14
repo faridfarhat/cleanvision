@@ -1,15 +1,6 @@
 'use client';
 
-import { FormEvent, useState, useEffect } from 'react';
-
-interface Feedback {
-  id: string;
-  name: string;
-  role: string;
-  feedback: string;
-  rating: number;
-  createdAt: string;
-}
+import { FormEvent, useState } from 'react';
 
 export default function FeedbackPage() {
   const [formData, setFormData] = useState({
@@ -18,24 +9,8 @@ export default function FeedbackPage() {
     feedback: '',
     rating: 5,
   });
-  const [feedbackList, setFeedbackList] = useState<Feedback[]>([]);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    fetchFeedback();
-  }, []);
-
-  const fetchFeedback = async () => {
-    try {
-      const res = await fetch('/api/feedback');
-      if (res.ok) {
-        const data = await res.json();
-        setFeedbackList(data);
-      }
-    } catch (error) {
-      console.error('Error fetching feedback:', error);
-    }
-  };
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -49,14 +24,15 @@ export default function FeedbackPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('/api/feedback', {
+      const res = await fetch('https://formspree.io/f/mzzvvrzk', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
       if (res.ok) {
+        setSubmitted(true);
         setFormData({ name: '', role: '', feedback: '', rating: 5 });
-        fetchFeedback();
+        setTimeout(() => setSubmitted(false), 5000);
       }
     } catch (error) {
       console.error('Error submitting feedback:', error);
@@ -71,6 +47,30 @@ export default function FeedbackPage() {
     ));
   };
 
+  const testimonials = [
+    {
+      id: '1',
+      name: 'Sarah Johnson',
+      role: 'Homeowner',
+      feedback: 'CleanVision exceeded our expectations! The team was professional, thorough, and our home has never looked better.',
+      rating: 5,
+    },
+    {
+      id: '2',
+      name: 'Michael Chen',
+      role: 'Office Manager',
+      feedback: 'We switched to CleanVision for our office and have been very impressed. Great service, fair pricing, and reliable.',
+      rating: 5,
+    },
+    {
+      id: '3',
+      name: 'Emily Rodriguez',
+      role: 'Business Owner',
+      feedback: 'Professional cleaning crew, always on time, and attention to detail is outstanding. Highly recommended!',
+      rating: 5,
+    },
+  ];
+
   return (
     <div className="page-container">
       <div className="container">
@@ -84,6 +84,16 @@ export default function FeedbackPage() {
             <div className="form-card">
               <h2>Share Your Feedback</h2>
               <p className="text-muted">We'd love to hear from you!</p>
+
+              {submitted && (
+                <div className="alert alert-success">
+                  <i className="fas fa-check-circle"></i>
+                  <div>
+                    <strong>Thank you!</strong>
+                    <p className="mb-0">Your feedback has been submitted successfully.</p>
+                  </div>
+                </div>
+              )}
 
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -173,30 +183,23 @@ export default function FeedbackPage() {
                 <p className="text-muted">Read what our customers have to say</p>
               </div>
 
-              {feedbackList.length > 0 ? (
-                feedbackList.map((item, idx) => (
-                  <div key={item.id || idx} className="feedback-item">
-                    <div className="feedback-header">
-                      <div className="feedback-avatar">
-                        {item.name.charAt(0).toUpperCase()}
-                      </div>
-                      <div className="feedback-info">
-                        <h4>{item.name}</h4>
-                        <p>{item.role}</p>
-                      </div>
-                      <div className="feedback-rating">
-                        {renderStars(item.rating)}
-                      </div>
+              {testimonials.map((item, idx) => (
+                <div key={item.id || idx} className="feedback-item">
+                  <div className="feedback-header">
+                    <div className="feedback-avatar">
+                      {item.name.charAt(0).toUpperCase()}
                     </div>
-                    <p className="feedback-text">"{item.feedback}"</p>
+                    <div className="feedback-info">
+                      <h4>{item.name}</h4>
+                      <p>{item.role}</p>
+                    </div>
+                    <div className="feedback-rating">
+                      {renderStars(item.rating)}
+                    </div>
                   </div>
-                ))
-              ) : (
-                <div className="feedback-empty">
-                  <i className="fas fa-comments"></i>
-                  <p>No feedback yet. Be the first to share!</p>
+                  <p className="feedback-text">"{item.feedback}"</p>
                 </div>
-              )}
+              ))}
             </div>
           </div>
         </div>

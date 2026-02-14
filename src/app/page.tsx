@@ -9,9 +9,9 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0);
 
   const heroImages = [
-    '/images/cleaning1.jpg',
-    '/images/cleaning2.jpg',
-    '/images/cleaning3.jpg',
+    '/cleanvision/images/cleaning1.jpg',
+    '/cleanvision/images/cleaning2.jpg',
+    '/cleanvision/images/cleaning3.jpg',
   ];
 
   // Track scroll for parallax effect
@@ -248,7 +248,7 @@ export default function Home() {
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
               <img
-                src="/images/cleaning2.jpg"
+                src="/cleanvision/images/cleaning2.jpg"
                 alt="Cleaner preparing supplies"
                 className="cv-split-image"
                 onError={(e) => {

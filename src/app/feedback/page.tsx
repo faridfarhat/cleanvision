@@ -24,7 +24,7 @@ export default function FeedbackPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FEEDBACK_FORM_ID', {
+      const res = await fetch('https://formspree.io/f/mpqjdlrq', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

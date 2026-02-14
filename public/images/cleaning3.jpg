@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect fill="#F3E5F5" width="400" height="300"/>
+  <rect fill="#BA68C8" x="50" y="100" width="300" height="150" rx="10"/>
+  <circle fill="#6A1B9A" cx="140" cy="160" r="25"/>
+  <circle fill="#6A1B9A" cx="200" cy="160" r="25"/>
+  <circle fill="#6A1B9A" cx="260" cy="160" r="25"/>
+  <text x="200" y="280" font-size="20" font-weight="bold" text-anchor="middle" fill="#6A1B9A">Commercial Cleaning</text>
+</svg>

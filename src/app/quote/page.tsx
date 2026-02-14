@@ -23,7 +23,7 @@ export default function QuotePage() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await fetch('https://formspree.io/f/xwpepkpe', {
+      const res = await fetch('https://formspree.io/f/YOUR_QUOTE_FORM_ID', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

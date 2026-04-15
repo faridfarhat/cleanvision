@@ -1,0 +1,11 @@
+Kia Ora Hiring Manager,
+
+I am excited to apply for the Data Engineer position. As a passionate data engineer committed to building fast and efficient data pipelines, I believe my skills and experience make me a strong match for this role.
+
+I recently acquired data certifications from Microsoft and CompTIA Data+, completing hands-on Microsoft Learn labs focused on the Fabric platform. In these labs, I ingested, cleansed, and transformed data from multiple sources. Beyond data engineering, I have practical experience with CI/CD for deploying web applications and static websites from GitHub repositories. I also designed and deployed an interactive dashboard using the AdventureWorks dataset—please refer to the project section of my resume for details.
+
+During my cloud engineering studies at Yoobee, I developed a medallion architecture with bronze, silver, and gold layers using NYC taxi data. The pipeline ingested data from Azure Data Lake Storage (ADLS) Gen2 into a Fabric Lakehouse via shortcuts, cleansed it using Spark notebooks in staging tables at the silver layer, and processed it into fact and dimension tables at the gold layer. I then built a dashboard enabling users to filter data and identify the busiest routes by time. Users triggered the pipeline by uploading Parquet files to ADLS Gen2. This project strengthened my skills in Python, SQL, and data pipeline automation.
+
+I am eager to contribute to your team and expand my expertise in Snowflake and DBT. Please see my CV for additional details. I look forward to hearing from you.
+
+Thank you for your time and consideration.

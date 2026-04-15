@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/cleanvision',
+  basePath: process.env.NODE_ENV === 'development' ? '' : '/cleanvision',
   images: {
     unoptimized: true,
   },

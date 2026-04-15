@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { assetPath } from '@/lib/assetPath';
 
 export default function Navbar() {
   return (
@@ -10,7 +11,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="cv-navbar-brand">
             <img
-              src="/cleanvision/images/default2.svg"
+              src={assetPath('/images/default2.svg')}
               alt="CleanVision Logo"
               className="cv-navbar-logo"
             />

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { assetPath } from '@/lib/assetPath';
 
 export default function Home() {
   const [currentFeedbackIndex, setCurrentFeedbackIndex] = useState(0);
@@ -9,9 +10,9 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0);
 
   const heroImages = [
-    '/cleanvision/images/cleaning1.jpg',
-    '/cleanvision/images/cleaning2.jpg',
-    '/cleanvision/images/cleaning3.jpg',
+    assetPath('/images/cleaning1.jpg'),
+    assetPath('/images/cleaning2.jpg'),
+    assetPath('/images/cleaning3.jpg'),
   ];
 
   // Track scroll for parallax effect
@@ -248,7 +249,7 @@ export default function Home() {
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
               <img
-                src="/cleanvision/images/cleaning2.jpg"
+                src={assetPath('/images/cleaning2.jpg')}
                 alt="Cleaner preparing supplies"
                 className="cv-split-image"
                 onError={(e) => {
